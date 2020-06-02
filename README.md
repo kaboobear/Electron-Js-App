@@ -56,9 +56,9 @@
 
 
 
-[forks-shield]: https://img.shields.io/github/forks/kaboobear/Passport-Local-JWT?style=flat-square
-[forks-url]: https://github.com/kaboobear/Passport-Local-JWT/network/members
-[issues-shield]: https://img.shields.io/github/issues/kaboobear/Passport-Local-JWT.svg?style=flat-square
-[issues-url]: https://github.com/kaboobear/Passport-Local-JWT/issues
-[license-shield]: https://img.shields.io/github/license/kaboobear/Passport-Local-JWT.svg?style=flat-square
-[license-url]: https://github.com/kaboobear/Passport-Local-JWT/blob/master/LICENSE.txt
+[forks-shield]: https://img.shields.io/github/forks/kaboobear/Electron-Js-App?style=flat-square
+[forks-url]: https://github.com/kaboobear/Electron-Js-App/network/members
+[issues-shield]: https://img.shields.io/github/issues/kaboobear/Electron-Js-App.svg?style=flat-square
+[issues-url]: https://github.com/kaboobear/Electron-Js-App/issues
+[license-shield]: https://img.shields.io/github/license/kaboobear/Electron-Js-App.svg?style=flat-square
+[license-url]: https://github.com/kaboobear/Electron-Js-App/blob/master/LICENSE.txt

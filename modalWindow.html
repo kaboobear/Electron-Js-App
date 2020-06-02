@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Modal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <form>
+        <input class="name-input" type="text" placeholder="name">
+        <input class="surname-input" type="text" placeholder="surname">
+        <button type="submit">Add</button>
+    </form>
+
+    <script>
+        const electron = require('electron');
+        const {ipcRenderer} = electron
+
+        const form = document.querySelector('form');
+        form.addEventListener('submit',function(e){
+            e.preventDefault();
+            const name = document.querySelector('.name-input').value;
+            const surname = document.querySelector('.surname-input').value;
+            ipcRenderer.send('item:add',{name,surname});
+        })
+    </script>
+</body>
+
+</html>

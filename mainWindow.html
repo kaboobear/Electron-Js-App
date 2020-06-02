@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Main</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main-window">
+        <div class="header-section">
+            <div class="buttons-block">
+                <div class="toggle-button">
+                    <img src="img/minus-solid.svg" alt="">
+                </div>
+
+                <div class="resize-button">
+                    <img src="img/square-regular.svg" alt="">
+                </div>
+
+                <div class="close-button">
+                    <img src="img/times-solid.svg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h1 class="main-title">Shopping List</h1>
+            <form class="add-form">
+                <div class="simple-input">
+                    <input autofocus class="title-input" type="text" placeholder="Product">
+                </div>
+
+                <div class="simple-input">
+                    <input class="price-input" type="text" placeholder="Price">
+                </div>
+
+                <button class="btn">Add</button>
+            </form>
+
+            <ul class="products-list">
+                <li class="empty-list">List is Empty</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <script>
+        const electron = require('electron');
+        const {
+            ipcRenderer
+        } = electron;
+        const ul = document.querySelector('ul');
+
+
+        //App Buttons
+        document.querySelector('.toggle-button').addEventListener('click', function () {
+            ipcRenderer.send('toggle');
+        })
+
+        document.querySelector('.resize-button').addEventListener('click', function () {
+            ipcRenderer.send('resize');
+        })
+
+        document.querySelector('.close-button').addEventListener('click', function () {
+            ipcRenderer.send('close');
+        })
+
+
+
+
+
+        const form = document.querySelector('.add-form');
+        form.addEventListener('submit', function (e) {
+            if (document.querySelector('.empty-list')) {
+                let emptyElem = document.querySelector('.empty-list');
+                emptyElem.parentNode.removeChild(emptyElem);
+            }
+
+            e.preventDefault();
+            const title = document.querySelector('.title-input').value;
+            const price = document.querySelector('.price-input').value;
+
+            const li = document.createElement('li');
+            li.className = 'product-item'
+
+            const title_elem = document.createElement('div');
+            title_elem.className = 'item-title'
+            const title_text = document.createTextNode(title);
+            title_elem.appendChild(title_text);
+
+            const price_elem = document.createElement('div');
+            price_elem.className = 'item-price'
+            const price_text = document.createTextNode(price + '$');
+            price_elem.appendChild(price_text);
+
+            li.appendChild(title_elem);
+            li.appendChild(price_elem)
+            ul.appendChild(li);
+        })
+
+        ul.addEventListener('click', function (e) {
+            if (e.target.classList.contains('product-item')) {
+                if (document.querySelectorAll('.product-item').length === 1) {
+                    const empty_elem = document.createElement('li');
+                    empty_elem.className = 'empty-list'
+                    const empty_text = document.createTextNode('List is Empty');
+                    empty_elem.appendChild(empty_text);
+                    ul.appendChild(empty_elem);
+                }
+                e.target.remove()
+            }
+        })
+    </script>
+</body>
+
+</html>
